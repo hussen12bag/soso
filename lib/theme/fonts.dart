@@ -4,8 +4,8 @@ import 'package:hotel_finder/theme/colors.dart';
 var mainwfont = TextStyle(
   color: Colors.white,
   fontFamily: 'font',
-  fontSize: 16,
-  fontWeight: FontWeight.w300,
+  fontSize: 30,
+  fontWeight: FontWeight.bold,
 );
 var mainbfont = TextStyle(
   color: Colors.black,
@@ -35,7 +35,7 @@ var subpfont = TextStyle(
 var subwfont = TextStyle(
   color: const Color.fromARGB(255, 255, 255, 255),
   fontFamily: 'font',
-  fontSize: 14,
+  fontSize: 18,
   fontWeight: FontWeight.w300,
 );
 var submain = TextStyle(
@@ -53,7 +53,7 @@ var lmain = TextStyle(
 var titleb = TextStyle(
   color: Colors.black,
   fontFamily: 'font',
-  fontSize: 50,
+  fontSize: 25,
   fontWeight: FontWeight.w800,
 );
 var titlew = TextStyle(
@@ -63,8 +63,7 @@ var titlew = TextStyle(
   fontWeight: FontWeight.w700,
 );
 
-var greyfont = TextStyle(
-  color: const Color.fromARGB(255, 78, 78, 78),
-  fontSize: 14,
-  fontWeight: FontWeight.w300,
-);
+var blackfont = TextStyle(
+    color: Color.fromARGB(255, 0, 0, 0),
+    fontSize: 14,
+    fontWeight: FontWeight.bold);

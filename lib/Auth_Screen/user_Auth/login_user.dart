@@ -8,6 +8,7 @@ import 'package:hotel_finder/components/Text_form.dart';
 import 'package:hotel_finder/components/rectangular_button.dart';
 import 'package:hotel_finder/theme/colors.dart';
 import 'package:hotel_finder/theme/fonts.dart';
+import 'package:http/http.dart' as http;
 
 class Loginpage extends StatelessWidget {
   Loginpage({super.key});
@@ -17,6 +18,34 @@ class Loginpage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future<void> login() async {
+      if (fkey.currentState!.validate()) {
+        final email = emailController.text;
+        final password = passwordController.text;
+
+        final response = await http.post(
+          Uri.parse('http://10.0.2.2:8000/api/userLogin'),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+          body: jsonEncode(<String, String>{
+            'email': email,
+            'password': password,
+          }),
+        );
+        print(response.statusCode);
+        if (response.statusCode == 200) {
+          final data = jsonDecode(response.body);
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text("Login done")));
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Login failed,   ')),
+          );
+        }
+      }
+    }
+
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
@@ -127,6 +156,9 @@ class Loginpage extends StatelessWidget {
                           ),
                         ),
                         RecButton(
+                          fun: () {
+                            login();
+                          },
                           color: Colors.black,
                           height: 40,
                           width: 120,

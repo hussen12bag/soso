@@ -44,6 +44,7 @@ dependencies:
   http: 
   shared_preferences: 
   dio: 
+  # image_picker: ^1.1.2
 
 
 
